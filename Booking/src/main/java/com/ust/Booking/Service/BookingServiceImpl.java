@@ -34,12 +34,12 @@ public class BookingServiceImpl implements BookingService{
         List<DriverDto> driverDTOList = webClientBuilder.baseUrl("http://localhost:9098")
                 .build()
                 .get()
-                .uri("/drivers/withcustomer/" + bookingModel.getBookingNumber())
+                .uri("/drivers/" + bookingModel.getBookingNumber())
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<DriverDto>>() {})
                 .block();
 
-        // Fetch passengers for each flight
+        // Fetch customers for each driver
         for (DriverDto driverDTO : driverDTOList) {
             List<CustomerDto> customerDTOList = webClientBuilder.baseUrl("http://localhost:9097")
                     .build()

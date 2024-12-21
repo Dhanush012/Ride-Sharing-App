@@ -59,4 +59,8 @@ public class DriverService {
 
         return driverdto;
     }
+
+    public List<Driver> getDriversByBooking(int bookingNumber) {
+        return repo.findByBookingNumber(bookingNumber);
+    }
 }
